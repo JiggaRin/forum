@@ -1,7 +1,5 @@
 <?php
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,12 +14,15 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+$factory->define(\App\Models\Comments::class, function (Faker $faker) {
+    $txt = $faker->realText(rand(500, 2000));
+
+    $comments = [
+        'user_id'       => (rand(1, 5) == 5) ? 1 : 2,
+        'category_id'   => rand(1, 2),
+        'body'          => $txt,
     ];
+
+    return $comments;
+
 });
