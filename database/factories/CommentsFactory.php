@@ -1,6 +1,5 @@
 <?php
 use App\User;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 /*
@@ -18,9 +17,10 @@ $factory->define(\App\Models\Comments::class, function (Faker $faker) {
     $txt = $faker->realText(rand(500, 2000));
 
     $comments = [
-        'user_id'       => (rand(1, 5) == 5) ? 1 : 2,
-        'category_id'   => rand(1, 2),
-        'body'          => $txt,
+        'user_id'       =>  (rand(1, 5) == 5) ? 1 : 2,
+        'post_id'       =>  rand(1, 50),
+        'category_id'   =>  rand(1, 2),
+        'body'          =>  $txt,
     ];
 
     return $comments;

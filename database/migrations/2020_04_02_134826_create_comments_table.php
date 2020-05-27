@@ -20,8 +20,8 @@ class CreateCommentsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->text('body');
 
-
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');

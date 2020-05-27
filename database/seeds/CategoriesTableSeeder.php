@@ -17,11 +17,11 @@ class CategoriesTableSeeder extends Seeder
 
         $cName = 'Без категории';
         $categories[] = [
-            'title'     =>  $cName,
-            'slug'      =>  Str::slug($cName, '-'),
-            'parent_id' =>  0,
-            'user_id' => 1,
-            'description' => null,
+            'title'         =>  $cName,
+            'slug'          =>  Str::slug($cName, '-'),
+            'parent_id'     =>  0,
+            'user_id'       =>  2,
+            'description'   =>  null,
 
 
 
@@ -34,11 +34,11 @@ class CategoriesTableSeeder extends Seeder
             $parentId = ($i > 4) ? rand(1, 4) : 1;
 
             $categories[] = [
-                'title'     => $cName,
-                'slug'      => Str::slug($cName, '-'),
-                'parent_id' => $parentId,
-                'user_id' => 1,
-                'description' => null,
+                'title'         =>  $cName,
+                'slug'          =>  Str::slug($cName, '-'),
+                'parent_id'     =>  $parentId,
+                'user_id'       =>  rand (1,2),
+                'description'   =>  null,
             ];
         }
 

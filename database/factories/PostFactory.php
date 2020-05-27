@@ -21,7 +21,7 @@ $factory->define(\App\Models\Posts::class, function (Faker $faker) {
 
     $post = [
         'user_id'       => (rand(1, 5) == 5) ? 1 : 2,
-        'category_id'   => rand(1, 2),
+        'category_id'   => rand(2, 11),
         'title'         => $title,
         'content_raw'   => $txt,
         'content_html'  => $txt,
