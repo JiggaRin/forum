@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Models\Posts;
 use Illuminate\Http\Request;
+use App\Models\Posts;
 
 class PostController extends BaseController
 {
@@ -14,8 +14,8 @@ class PostController extends BaseController
      */
     public function index()
     {
-        $items = Posts::all();
-        return view('blog.posts.index', compact('items'));
+        $posts = Posts::paginate(35);
+        return view('blog.posts.index', compact('posts'));
     }
 
     /**

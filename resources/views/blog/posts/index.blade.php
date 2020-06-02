@@ -1,9 +1,9 @@
 <table>
-    @foreach($items as $item)
+    @foreach($posts as $post)
         <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->title }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ $post->id }}</td>
+            <td>{{ $post->title }}</td>
+            <td>{{ $post->created_at }}</td>
         </tr>
     @endforeach
 </table>

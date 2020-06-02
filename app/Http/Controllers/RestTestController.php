@@ -13,7 +13,7 @@ class RestTestController extends Controller
      */
     public function index()         // Отвечает за вывод группы сущностей (вывод постов)
     {
-        dd(1);
+        //dd(1);
     }
 
     /**

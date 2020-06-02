@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use App\Models\Categories;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -22,9 +22,6 @@ class CategoriesTableSeeder extends Seeder
             'parent_id'     =>  0,
             'user_id'       =>  2,
             'description'   =>  null,
-
-
-
         ];
 
         // Цикл создания рандомных категорий
@@ -42,6 +39,6 @@ class CategoriesTableSeeder extends Seeder
             ];
         }
 
-        DB::table('categories')->insert($categories);
+        Categories::insert($categories);
     }
 }
