@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <table>
     @foreach($posts as $post)
         <tr>
@@ -7,3 +10,4 @@
         </tr>
     @endforeach
 </table>
+@endsection

@@ -11,16 +11,30 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function () {      //Путь к вызову метода @index
     Route::resource('posts', 'PostController')->names('blog.posts');
 });
 
-Route::resource('rest', 'RestTestController')->names('restTest');
+$groupData = [
+    'namespace' => 'Blog\Admin',
+    'prefix'    => 'admin/blog',
+];
+Route::group($groupData, function () {
+    //BlogCategory
+    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    Route::resource('categories', 'CategoryController') // Создание ресурсного маршрута
+        ->only($methods)
+        ->names('blog.admin.categories');
+});
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::resource('rest', 'RestTestController')->names('restTest');
