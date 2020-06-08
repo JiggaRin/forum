@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 
@@ -70,9 +71,10 @@ class CategoryController extends BaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     * @param  \App\Http\Requests\CategoryUpdateRequest
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)   // Интсрументарий для рабоыт с входящими данными
+    public function update(CategoryUpdateRequest $request, $id)   // Интсрументарий для рабоыт с входящими данными, валидатор
     {
         $item = Categories::find($id);
         if (empty($item)) {
@@ -81,7 +83,7 @@ class CategoryController extends BaseController
                 ->withInput();
         }
 
-        $data = $request->all();    //Получение массива всех данных которые пришли с запросом
+        $data = $request->input();    //Получение массива всех данных которые пришли с запросом
         $result = $item
             ->fill($data)
             ->save();
