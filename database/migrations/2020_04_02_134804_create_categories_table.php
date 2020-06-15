@@ -26,7 +26,7 @@ class CreateCategoriesTable extends Migration
             $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
         });
     }
 

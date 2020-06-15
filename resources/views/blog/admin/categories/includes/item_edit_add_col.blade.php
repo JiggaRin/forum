@@ -1,4 +1,6 @@
-@php /** @var App\Models\Categories $item */    @endphp
+@php
+    /** @var App\Models\Categories $item */
+@endphp
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
