@@ -26,7 +26,7 @@ class CategoriesTableSeeder extends Seeder
 
         // Цикл создания рандомных категорий
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 2; $i <= 11; $i++) {
             $cName = 'Категория №' . $i;
             $parentId = ($i > 4) ? rand(1, 4) : 1;
 

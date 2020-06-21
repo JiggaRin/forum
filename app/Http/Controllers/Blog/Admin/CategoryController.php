@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Blog\Admin;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Categories;
-use App\Models\Posts;
 use App\Repositories\CategoryRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -17,13 +16,28 @@ use Illuminate\View\View;
 class CategoryController extends BaseController
 {
     /**
+     * @return Factory|View
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->categoryRepository = app(categoryRepository::class);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Factory|View
+     * @return Response
      */
-    public function index()
+    public function index()// Страница списка затегорий
     {
-        $paginator = Categories::paginate(15);
+        $paginator = $this->categoryRepository->getAllWithPaginate(5);
+
         return view('blog.admin.categories.index', compact('paginator'));
     }
 
@@ -35,7 +49,8 @@ class CategoryController extends BaseController
     public function create()
     {
         $item = new Categories();
-        $categoryList = Categories::all();
+        $categoryList
+            = $this-> categoryRepository->getForComboBox();
 
         return view('blog.admin.categories.edit',
             compact('item', 'categoryList'));
@@ -45,7 +60,7 @@ class CategoryController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CategoryCreateRequest $request
      * @return RedirectResponse
      */
     public function store(CategoryCreateRequest $request)
@@ -82,16 +97,16 @@ class CategoryController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @param CategoryRepository $categoryRepository
      * @return Factory|View
      */
-    public function edit($id, CategoryRepository $categoryRepository)
+    public function edit($id)
     {
-        $item = $categoryRepository->getEdit($id);
+        $item = $this->categoryRepository->getEdit($id);
         if (empty($item)) {
             abort(404);
         }
-        $categoryList = $categoryRepository->getForComboBox();
+        $categoryList
+            = $this->categoryRepository->getForComboBox();
 
         return view('blog.admin.categories.edit',
             compact('item', 'categoryList'));
@@ -100,14 +115,14 @@ class CategoryController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @param CategoryUpdateRequest
+     * @param CategoryUpdateRequest $request
+     * @param int $id
      * @return RedirectResponse
      */
     public function update(CategoryUpdateRequest $request, $id)   // Интсрументарий для рабоыт с входящими данными, валидатор
     {
-        $item = Categories::find($id);
+        $item = $this->categoryRepository->getEdit($id);
+
         if (empty($item)) {
             return back()
                 ->withErrors(['msg' => "Запись id=[{$id}] не найдена"])
