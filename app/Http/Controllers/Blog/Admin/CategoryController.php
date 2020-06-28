@@ -8,7 +8,6 @@ use App\Models\Categories;
 use App\Repositories\CategoryRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
