@@ -41,6 +41,14 @@ class PostRepository extends CoreRepository
        $result = $this->startConditions()
                       ->select($columns)
                       ->orderBy('id', 'DESC')
+                      ->with([
+                          #1 способ
+                          'category' => function ($query) {
+                                $query->select(['id', 'title']);
+                          },
+                          #2 способ
+                          'user:id,name',
+                      ])
                       ->paginate(25);
        return $result;
    }

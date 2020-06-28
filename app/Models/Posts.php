@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Models;
-use App\Models\Comments;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -14,27 +14,25 @@ class Posts extends Model
 {
     use softDeletes;
 
-
-
-    protected $fillable
-        = [
-            'user_id',
-            'category_id',
-            'title',
-            'slug',
-            'excerpt',
-            'content_raw',
-            'content_html',
-            'is_published',
-            'published_at',
-        ];
+    /**
+     * Категория статьи.
+     *
+     * @return BelongsTo
+     */
+    public function category()
+    {
+        //Статья принадлежит категории
+        return $this->belongsTo(Categories::class);
+    }
 
     /**
-     * Категория статьи
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Автор статьи.
+     *
+     * @return BelongsTo
      */
-
-
-
-
+    public function user()
+    {
+        //Статья принадлежит пользователю
+        return $this->belongsTo(User::class);
+    }
 }
