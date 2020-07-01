@@ -5,11 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class BlogPost
- * @package App\Models
- *
- */
 class Posts extends Model
 {
     use softDeletes;

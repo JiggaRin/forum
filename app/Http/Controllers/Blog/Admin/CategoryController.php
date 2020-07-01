@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Categories;
 use App\Repositories\CategoryRepository;
+use App\Repositories\PostRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -19,6 +20,11 @@ class CategoryController extends BaseController
      * @var CategoryRepository
      */
     private $categoryRepository;
+
+    /**
+     * @var PostRepository
+     */
+    private $postRepository;
 
     public function __construct()
     {
