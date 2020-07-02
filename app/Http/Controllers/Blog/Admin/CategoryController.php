@@ -71,9 +71,7 @@ class CategoryController extends BaseController
     public function store(CategoryCreateRequest $request)
     {
         $data = $request->input();// Получение данных которые пришли с формы
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
+
 
         // Создание объекта и добавление в БД
         $item = (new Categories())->create($data);
@@ -134,10 +132,7 @@ class CategoryController extends BaseController
                 ->withInput();
         }
 
-        $data = $request->input();    //Получение массива всех данных которые пришли с запросом
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
+        $data = $request->all();    //Получение массива всех данных которые пришли с запросом
 
         $result = $item->update($data);
 

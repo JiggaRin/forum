@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Http\Requests\PostUpdateRequest;
 use App\Repositories\PostRepository;
@@ -112,13 +110,6 @@ class PostController extends BaseController
         }
 
         $data = $request->all();//Получение всех данных о реквестах которые приходят
-
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
-        if (empty($item->published_at) && $data['is_published']) {
-            $data['published_at'] = Carbon::now();
-        }
 
         $result = $item->update($data);
 
