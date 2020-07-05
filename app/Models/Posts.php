@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -36,14 +37,13 @@ class Posts extends Model
         ];
 
     /**
-     * Категория статьи.
+     * Комментарии поста.
      *
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function category()
+    public function comments()
     {
-        //Статья принадлежит категории
-        return $this->belongsTo(Categories::class);
+        return $this->hasMany(Comments::class);
     }
 
     /**
@@ -53,7 +53,16 @@ class Posts extends Model
      */
     public function user()
     {
-        //Статья принадлежит пользователю
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Категория статьи.
+     *
+     * @return BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
     }
 }

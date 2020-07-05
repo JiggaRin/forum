@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Posts;
+use App\Models\Comments;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
 
-        factory(\App\Models\Posts::class, 50)->create();
-        factory(\App\Models\Comments::class, 100)->create();
+        factory(Posts::class, 50)->create();
+        factory(Comments::class, 100)->create();
 
     }
 }

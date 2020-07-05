@@ -1,5 +1,5 @@
 <?php
-use App\User;
+use App\Models\Posts;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -14,7 +14,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Posts::class, function (Faker $faker) {
+$factory->define(Posts::class, function (Faker $faker) {
     $title = $faker->sentence(rand(3, 7), true);
     $txt = $faker->realText(rand(1000, 4000));
     $isPublished = (bool)random_int(0, 1);

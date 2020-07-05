@@ -1,5 +1,5 @@
 <?php
-use App\User;
+use App\Models\Comments;
 use Faker\Generator as Faker;
 
 /*
@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Comments::class, function (Faker $faker) {
+$factory->define(Comments::class, function (Faker $faker) {
     $txt = $faker->realText(rand(500, 2000));
 
     $comments = [
