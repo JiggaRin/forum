@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify'=> true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function () {      //Путь к вызову метода @index
@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function () {      //�
 $groupData = [
     'namespace' => 'Blog\Admin',
     'prefix'    => 'admin/blog',
+    'middleware'=> 'verified',
 ];
 Route::group($groupData, function () {
     //BlogCategory
