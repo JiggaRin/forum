@@ -17,6 +17,11 @@ class Comments extends Model
             'category_id',
             'body',
         ];
+    protected $dates
+        = [
+            'created_at',
+            'updated_at'
+        ];
 
     /**
      * Автор статьи.
@@ -25,7 +30,7 @@ class Comments extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     /**
@@ -35,6 +40,6 @@ class Comments extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Posts::class);
+        return $this->belongsTo('App\Models\Posts', 'post_id');
     }
 }

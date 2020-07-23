@@ -36,6 +36,12 @@ class Posts extends Model
             'user_id',
         ];
 
+    protected $dates
+        = [
+            'created_at',
+            'updated_at'
+        ];
+
     /**
      * Комментарии поста.
      *
@@ -43,7 +49,7 @@ class Posts extends Model
      */
     public function comments()
     {
-        return $this->hasMany(Comments::class);
+        return $this->hasMany('App\Models\Comments');
     }
 
     /**
@@ -53,7 +59,7 @@ class Posts extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     /**
@@ -63,6 +69,6 @@ class Posts extends Model
      */
     public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo('App\Models\Categories', 'category_id');
     }
 }

@@ -21,6 +21,12 @@ class Categories extends Model
             'description',
         ];
 
+    protected $dates
+        = [
+          'created_at',
+          'updated_at'
+        ];
+
     /**
      * Статьи категории.
      *
@@ -28,7 +34,7 @@ class Categories extends Model
      */
     public function post()
     {
-        return $this->hasMany(Posts::class);
+        return $this->hasMany('App\Models\Posts');
     }
 
     /**
@@ -38,6 +44,6 @@ class Categories extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }
