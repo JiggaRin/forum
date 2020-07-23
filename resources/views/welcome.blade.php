@@ -1,4 +1,4 @@
-
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -59,6 +59,30 @@
                 text-transform: uppercase;
             }
 
+            button  {
+                color: #636b6f;
+                padding: 0 25px;
+                position: center;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-transform: uppercase;
+            }
+
+            .text-but1 {
+                display:inline-block;
+                float: left;
+            }
+            .text-but2 {
+                display:inline-block;
+                position: center;
+            }
+
+            .text-but3 {
+                display:inline-block;
+                float: right;
+            }
+
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -71,10 +95,16 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <form action="{{ route('login') }}">
+                            <button class="btn btn-outline-success d-block mr-auto">Login</button>
+                        </form>
+{{--                        <a href="{{ route('login') }}">Login</a>--}}
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <form action="{{ route('register') }}">
+                                <button class="btn btn-outline-danger d-block mr-auto">Register</button>
+                            </form>
+{{--                            <a href="{{ route('register') }}">Register</a>--}}
                         @endif
                     @endauth
                 </div>
@@ -82,18 +112,23 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel's forum
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="text-but1">
+                    <form action="http://127.0.0.1:8000/admin/blog/categories">
+                        <button class="btn btn-outline-dark d-block mr-auto">Categories</button>
+                    </form>
+                </div>
+                <div class="text-but2">
+                    <form action="http://127.0.0.1:8000/admin/blog/posts">
+                        <button class="btn btn-outline-dark">Posts</button>
+                    </form>
+                </div>
+                <div class="text-but3">
+                    <form action="https://github.com/JiggaRin/forum">
+                        <button class="btn btn-outline-primary d-block ml-auto">GitHub</button>
+                    </form>
                 </div>
             </div>
         </div>

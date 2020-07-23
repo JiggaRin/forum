@@ -17,15 +17,7 @@ Using Laravel - v.7.13.0.
  5. Run  `php artisan migrate:refresh --seed` for migrating and seeding the database.
  
  6. Run `php artisan serve` for navigating to:
-
-#### categories section:
-
-http://127.0.0.1:8000/admin/blog/categories
-
-#### posts sections:
-
-http://127.0.0.1:8000/admin/blog/posts
-
+ http://127.0.0.1:8000/
 
 ### Dev Environment Configurations
 

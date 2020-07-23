@@ -6,8 +6,16 @@
     <div class="col-md-12">
         <div class="card" >
             <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/admin/blog/categories?#">Categories</a></li>
+                    </ol>
+                </nav>
                 <div class="card-title"></div>
                 <ul class="nav nav-tabs" role="tablist">
+                    <input type="button" class="btn btn-outline-dark" onclick="history.back();" value="Назад"/>
+                    <hr>
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#maindata" role="tab">Основные данные</a>
                     </li>

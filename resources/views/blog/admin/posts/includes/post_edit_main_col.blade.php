@@ -3,6 +3,12 @@
 @endphp
 <div class="row justify-content-center">
     <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/">Home</a></li>
+                <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/admin/blog/posts">Posts</a></li>
+            </ol>
+        </nav>
         <div class="card">
             <div class="card-header">
                 @if($item->is_published)
@@ -14,7 +20,10 @@
             <div class="card-body">
                 <div class="card-title"></div>
                 <div class="card-subtitle mb-2 text-muted"></div>
+
                 <ul class="nav nav-tabs" role="tablist">
+                    <input type="button" class="btn btn-outline-dark" onclick="history.back();" value="<- Назад"/>
+                    <hr>
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#maindata" role="tab">Основные данные</a>
                     </li>

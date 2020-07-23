@@ -5,6 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                    <form action="http://127.0.0.1:8000/">
+                        <button class="btn btn-outline-dark"><- На главную</button>
+                    </form>
+                    <input type="button" class="btn btn-outline-success" onclick="history.forward();" value="Вперед ->"/>
+                    <hr>
                     <a class="btn btn-primary" href="{{ route('blog.admin.categories.create') }}">Добавить</a>
                 </nav>
                 <div class="card">
