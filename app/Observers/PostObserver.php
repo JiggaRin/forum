@@ -16,7 +16,10 @@ class PostObserver
      */
     public function creating(Posts $posts)
     {
-        //
+        $this->setPublishedAt($posts);
+        $this->setSlug($posts);
+        $this->setHtml($posts);
+        $this->setUser($posts);
     }
 
     /**
@@ -60,6 +63,28 @@ class PostObserver
     }
 
     /**
+     * Установка значения полю content_html относительно поля content_raw.
+     *
+     * @param Posts $post
+     */
+    protected function setHtml(Posts $post)
+    {
+        if ($post->isDirty('content_raw')) {
+            $post->content_html = $post->content_raw;
+        }
+    }
+
+    /**
+     * Усли не указан user_id, то устанавливаем пользователя по умолчанию
+     *
+     * @param Posts $post
+     */
+    protected function setUser(Posts $post)
+    {
+        $post->user_id = auth()->id() ?? Posts::UNKNOWN_USER; // заполнение поля user_id авторизованным юзером
+    }
+
+    /**
      * Handle the posts "deleted" event.
      *
      * @param  \App\Models\Posts  $posts
@@ -91,5 +116,4 @@ class PostObserver
     {
         //
     }
-
 }

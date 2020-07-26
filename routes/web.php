@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Проверка верифицирован ли пользователь, для допуска на страничку home
 Auth::routes(['verify'=> true]);
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function () {      //Путь к вызову метода @index
     Route::resource('posts', 'PostController')->names('blog.posts');
@@ -43,5 +43,3 @@ Route::group($groupData, function () {
         ->except(['show'])
         ->names('blog.admin.posts');
 });
-
-//Route::resource('rest', 'RestTestController')->names('restTest');

@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Posts extends Model
 {
     use softDeletes;
+    const UNKNOWN_USER = 1; // заглушка
 
     protected $fillable
         = [
@@ -33,7 +34,6 @@ class Posts extends Model
             'content_raw',
             'is_published',
             'published_at',
-            'user_id',
         ];
 
     protected $dates

@@ -10,7 +10,6 @@ use App\Repositories\PostRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CategoryController extends BaseController
