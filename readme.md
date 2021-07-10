@@ -19,23 +19,6 @@ Using Laravel - v.7.13.0.
  6. Run `php artisan serve` for navigating to:
  http://127.0.0.1:8000/
 
-### Dev Environment Configurations
-
-**Database**
-
-*DB_CONNECTION=mysql
-
-*DB_HOST=127.0.0.1
-
-*DB_PORT=3306
-
-*DB_DATABASE=forum
-
-*DB_USERNAME=root
-
-*DB_PASSWORD=1488
-
-
 **Redis**
 
 *REDIS_HOST=127.0.0.1
